@@ -88,7 +88,12 @@ plt.text(1.2,3,"N=300",size=11,color='b')
 #    e.g. for 3sigma (99.8%) confidence find x such that
 #    the integral up to x contains 99.8% of the area
 # how can you approximate this using np.argsort?
-# 
+#This can be approximated by using np.argsort to sort the data such that indices
+#assigned to each red chi^2 will be listed from least to greatest. Then we use the
+#998 element from the array inds, that is inds[998] that correspondes to the 99.8% 
+#confidence interval. The output of inds[998] will be the element we have to search
+#for in redchisqdist1[inds[998]] & redchisqdist2[inds[998]] to obtain the reduced
+#chi^2 for 99.8% confidence for both N=30 and N=300.
 # make sure to set iters=1000 for this exercise....
 inds=np.argsort(redchisqdist1)
 print("Reduced chi^2 for 99.8% confidence for N=30:", redchisqdist1[inds[998]]) # fill in to print red. chi^2 for 99.8% conf. for N=30
